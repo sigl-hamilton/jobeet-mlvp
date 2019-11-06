@@ -24,7 +24,6 @@ RUN apt-get update &&\
     apt-get update &&\
     apt-get install -y --no-install-recommends nodejs &&\
     npm config set registry https://registry.npm.taobao.org --global &&\
-    npm install --global gulp-cli &&\
-    npm install
+    npm install --global gulp-cli
 
 CMD php-fpm
