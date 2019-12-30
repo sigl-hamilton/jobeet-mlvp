@@ -26,11 +26,9 @@ RUN apt-get update &&\
     npm config set registry https://registry.npm.taobao.org --global &&\
     npm install --global gulp-cli
 
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
+ADD . /var/www
+RUN chown -R www-data:www-data /var/www
 
-COPY --chown=www:www . /var/www
-
-USER www
+USER 1000:1000
 
 CMD php-fpm

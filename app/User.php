@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'candidate', 'recruiter'
     ];
 
     /**
@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the user's label
+     *
+     */
+    public function labels()
+    {
+        return $this->hasMany('App\Label');
+    }
 }
