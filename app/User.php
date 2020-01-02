@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -44,5 +45,15 @@ class User extends Authenticatable
     public function labels()
     {
         return $this->hasMany('App\Label');
+    }
+
+    public static function recruiters()
+    {
+        return DB::table('users')->where('recruiter', 1)->get();
+    }
+
+    public function recruiterJobs()
+    {
+        return $this->hasMany('App/Job');
     }
 }
