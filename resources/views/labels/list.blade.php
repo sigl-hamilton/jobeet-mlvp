@@ -13,7 +13,7 @@
                             @endforeach
                         </ul>
                         <div class="col-md-6 mt-2">
-                            <a class="btn btn-primary" href="{{ route('label-create-form') }}" role="button">{{ __('Add a new Label') }}</a>
+                            <a class="btn btn-primary" href="{{ route('label.create') }}" role="button">{{ __('Add a new Label') }}</a>
                         </div>
                     </div>
                 </div>

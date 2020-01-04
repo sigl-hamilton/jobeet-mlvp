@@ -34,9 +34,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li><a class="nav-link" href="{{ route('home') }}">Dashboard</a></li>
-                        <li><a class="nav-link" href="{{ route('label-list') }}">Labels</a></li>
-                        <li><a class="nav-link" href="{{ route('user-list') }}">Users</a></li>
-                        <li><a class="nav-link" href="{{ route('job-list') }}">Jobs</a></li>
+                        <li><a class="nav-link" href="{{ route('label.list') }}">Labels</a></li>
+                        <li><a class="nav-link" href="{{ route('user.list') }}">Users</a></li>
+                        <li><a class="nav-link" href="{{ route('job.list') }}">Jobs</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -58,15 +58,15 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('label-list') }}">
+                                    <a class="dropdown-item" href="{{ route('label.list') }}">
                                         {{ __('Labels') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('user-list') }}">
+                                    <a class="dropdown-item" href="{{ route('user.list') }}">
                                         {{ __('Users') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('user-profile') }}">
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}">
                                         {{ __('Profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Create a new label') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('label-insert') }}">
+                        <form method="POST" action="{{ route('label.insert') }}">
                             @csrf
 
                             <div class="form-group row">

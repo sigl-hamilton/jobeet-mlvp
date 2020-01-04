@@ -18,12 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/user/profile', 'UserController@profile')->name('user-profile');
-Route::get('/user/list', 'UserController@list')->name('user-list');
 
-Route::get('/job/list', 'JobController@list')->name('job-list');
+Route::get('/user/profile', 'UserController@profile')->name('user.profile');
+Route::get('/user/list', 'UserController@list')->name('user.list');
+Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
+Route::put('/user/update/{id}', 'UserController@update')->name('user.update');
 
-Route::get('/label/list', 'LabelController@list')->name('label-list');
-Route::get('/label/create-form', 'LabelController@showCreateLabelForm')->name('label-create-form');
-Route::post('/label/insert', 'LabelController@insert')->name('label-insert');
+Route::get('/job/list', 'JobController@list')->name('job.list');
+
+Route::get('/label/list', 'LabelController@list')->name('label.list');
+Route::get('/label/create-form', 'LabelController@showCreateLabelForm')->name('label.create');
+Route::post('/label/insert', 'LabelController@insert')->name('label.insert');
 
