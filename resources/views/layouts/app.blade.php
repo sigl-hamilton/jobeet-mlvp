@@ -37,6 +37,7 @@
                         <li><a class="nav-link" href="{{ route('label.list') }}">Labels</a></li>
                         <li><a class="nav-link" href="{{ route('user.list') }}">Users</a></li>
                         <li><a class="nav-link" href="{{ route('job.list') }}">Jobs</a></li>
+                        <li><a class="nav-link" href="{{ route('company.list') }}">Companies</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -29,6 +29,11 @@ Route::get('/job/index/{id}', 'JobController@index')->name('job.index');
 Route::get('/job/edit/{id}', 'JobController@edit')->name('job.edit');
 Route::put('/job/update/{id}', 'JobController@update')->name('job.update');
 
+Route::get('/company/list', 'CompanyController@list')->name('company.list');
+Route::get('/company/index/{id}', 'CompanyController@index')->name('company.index');
+Route::get('/company/edit/{id}', 'CompanyController@edit')->name('company.edit');
+Route::put('/company/update/{id}', 'CompanyController@update')->name('company.update');
+
 Route::get('/label/list', 'LabelController@list')->name('label.list');
 Route::get('/label/create-form', 'LabelController@showCreateLabelForm')->name('label.create');
 Route::post('/label/insert', 'LabelController@insert')->name('label.insert');

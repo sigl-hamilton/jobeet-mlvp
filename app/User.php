@@ -56,6 +56,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App/Job');
     }
+
+    public function company(){
+        return $this->belongsTo('App/Company');
+    }
 /*
     public function update()
     {
