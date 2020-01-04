@@ -17,10 +17,18 @@ class Label extends Model
     ];
 
     /**
-     *  Get candidates that has this label
+     *  Get candidates that have this label
      */
     public function users()
     {
         return $this->belongsToMany('App/User', 'users_labels');
+    }
+
+    /**
+     *  Get jobs that have this label
+     */
+    public function jobs()
+    {
+        return $this->belongsToMany('App/Job', 'jobs_labels');
     }
 }

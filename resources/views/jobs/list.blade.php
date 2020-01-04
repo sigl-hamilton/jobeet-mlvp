@@ -13,7 +13,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Recruiter: {{$job->recruiter->name}}</h5>
                                 <p class="card-text">{{ $job->description }}</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="{{ route('job.index', ['id' => $job->id]) }}" class="btn btn-primary">See more</a>
                             </div>
                         </div>
                         @endforeach

@@ -58,13 +58,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('label.list') }}">
-                                        {{ __('Labels') }}
-                                    </a>
 
-                                    <a class="dropdown-item" href="{{ route('user.list') }}">
-                                        {{ __('Users') }}
-                                    </a>
 
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">
                                         {{ __('Profile') }}
