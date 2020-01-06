@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'candidate', 'recruiter', 'labels'
+        'name', 'email', 'password', 'user_type', 'labels'
     ];
 
     /**
@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public static function recruiters()
     {
-        return DB::table('users')->where('recruiter', 1)->get();
+        return DB::table('users')->where('user_type', 'recruiter')->get();
     }
 
     public function recruiterJobs()

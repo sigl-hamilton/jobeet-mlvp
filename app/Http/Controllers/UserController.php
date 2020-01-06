@@ -64,8 +64,13 @@ class UserController extends Controller
     {
         $request->validate([
             'labels' => 'required|array',
+            'user_type' => 'required|in:candidate,recruiter',
         ]);
-        User::where('id',$id)->first()->labels()->sync($request->labels);
+
+        $user = User::where('id',$id)->first();
+        $user->labels()->sync($request->labels);
+        $user->user_type=$request->user_type;
+        $user->save();
         $data['labels'] = Label::all();
         $data['user_info'] = User::where(['id' => $id])->with('labels')->first();
         return view('users.edit', $data)

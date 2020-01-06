@@ -18,14 +18,12 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
 
-    $candidate = $faker->boolean();
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => 'secret', // password
         'remember_token' => Str::random(10),
-        'candidate' => $candidate,
-        'recruiter' => !$candidate,
+        'user_type' => $faker->randomElement(['recruiter', 'candidate'])
     ];
 });

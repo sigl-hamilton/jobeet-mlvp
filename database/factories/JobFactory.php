@@ -24,6 +24,8 @@ $factory->define(Job::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'description' => $faker->text,
-        'recruiter_id' => $faker->randomElement($recruiters)
+        'recruiter_id' => $faker->randomElement($recruiters),
+        'job_type' => $faker->randomElement(['permanent', 'temporary', 'contract', 'internship']),
+        'duration' => $faker->randomElement(['l6m','m6m','p']),
     ];
 });
