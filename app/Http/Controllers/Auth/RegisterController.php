@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Company;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -41,6 +42,18 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm() {
+
+        $companies = Company::all();
+
+        return view('auth.register', ['companies' => $companies]);
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -63,10 +76,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $candidate = $data['user_type'] == 'candidate';
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'recruiter' => !$candidate,
+            'candidate' => $candidate,
+            'company' => $data['company'],
         ]);
     }
 }

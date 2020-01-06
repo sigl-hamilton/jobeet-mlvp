@@ -1,11 +1,17 @@
-Pour faire en sorte que le projet marche il faut utiliser les commandes suivantes dans un shell.
+Faire dans une premier shell un `docker-compose up` à la racine du projet
+
+Pour faire en sorte que le projet marche il faut utiliser les commandes suivantes dans un shell, à la racine du projet
 
 ```
 docker-compose exec app composer install
-Docker-compose exec app npm install --no-bin-links
+docker-compose exec app npm install --no-bin-links
 docker-compose exec app cp .env.example .env
 docker-compose exec app php artisan key:generate
 docker-compose exec app php artisan optimize
 docker-compose exec app php artisan migrate --seed
-docker-compose exec app php artisan make:controller MyController
+docker-compose exec app npm run watch
 ```
+
+Ensuite selon votre OS, il faut soit se connecter sur 127.0.0.1:8080, soit sur 192.168.99.100:8080 (Si cette adresse ne marche pas, faites un `docker-machine ip`) sur Windows.
+
+Vous devriez arriver sur une page avec un gros LARAVEL. Et en haut a droite des bouton Login et Register qui vous permettent de vous connecter.
