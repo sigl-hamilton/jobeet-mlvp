@@ -13,7 +13,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">User's Type</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -22,7 +22,7 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name}}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->candidate ? 'Candidate': 'Recruiter'}}</td>
+                                    <td>{{ ucfirst($user->user_type) }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

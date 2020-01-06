@@ -44,16 +44,27 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="user_type" class="col-md-4 col-form-label text-md-right">{{ __('User\'s Type') }}</label>
+
+                                <div class="col-md-6">
+                                    <select class="form-control" id="user_type" name="user_type">
+                                        <option value="candidate" {{ Auth::user()->user_type  === 'candidate'? 'selected':'' }}>Candidate</option>
+                                        <option value="recruiter" {{ Auth::user()->user_type === 'recruiter'? 'selected':'' }}>Recruiter</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right" for="labels">{{ __('Skills') }}</label>
                                 <div class="col-md-6">
                                     <select multiple="multiple"  class="form-control"  id="labels" name="labels[]">
                                         @foreach($labels as $label)
-
                                             <option value="{{ $label->id }}" {{ ($user_info->labels->pluck('id')->contains($label->id)) ? 'selected':'' }}>{{ $label->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
+
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

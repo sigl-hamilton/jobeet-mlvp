@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">{{ Auth::user()->name}}</div>
+                    <div class="card-header">{{ Auth::user()->name }}</div>
                     <div class="card-body">
                         <ul class="navbar-nav mr-auto">
                             <li><a class="nav-link" href="{{ route('user.edit', ['id' => Auth::user()->id]) }}">Personnal information</a></li>

@@ -28,6 +28,8 @@ Route::get('/job/list', 'JobController@list')->name('job.list');
 Route::get('/job/index/{id}', 'JobController@index')->name('job.index');
 Route::get('/job/edit/{id}', 'JobController@edit')->name('job.edit');
 Route::put('/job/update/{id}', 'JobController@update')->name('job.update');
+Route::post('/job/insert/{id}', 'JobController@insert')->name('job.insert');
+Route::get('/job/create', 'JobController@create')->name('job.create');
 
 Route::get('/company/list', 'CompanyController@list')->name('company.list');
 Route::get('/company/index/{id}', 'CompanyController@index')->name('company.index');
