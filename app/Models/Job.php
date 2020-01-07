@@ -13,7 +13,7 @@ class Job extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'job_type', 'duration'
+        'name', 'description', 'job_type', 'duration', 'recruiter_id'
     ];
 
     public function getDurationAttribute($value)
@@ -39,11 +39,19 @@ class Job extends Model
     }
 
     /**
-     *  Get candidates that has this label
-     */
+ *  Get candidates that has this label
+ */
     public function recruiter()
     {
         return $this->belongsTo('App\User');
+    }
+
+    /**
+     *  Get candidates that has this label
+     */
+    public function company()
+    {
+        return $this->belongsTo('App\Company');
     }
 
 }

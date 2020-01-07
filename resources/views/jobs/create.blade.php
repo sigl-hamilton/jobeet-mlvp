@@ -13,9 +13,8 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('job.insert', ['user_id' => $recruiter->id]) }}">
+                        <form method="POST" action="{{ route('job.insert', ['id' => $recruiter->id]) }}">
 
-                            <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group row">

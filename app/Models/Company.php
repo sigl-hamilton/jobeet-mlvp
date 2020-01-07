@@ -24,6 +24,14 @@ class Company extends Model
         return $this->hasMany('App\User');
     }
 
+    /**
+     *  Get jobs that have this company
+     */
+    public function jobs()
+    {
+        return $this->hasMany('App\Job');
+    }
+
     public function getNumberOfEmployee()
     {
         return $this->number_of_employees;

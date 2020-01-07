@@ -105,7 +105,7 @@ class JobController extends Controller
         $data['labels'] = Label::all();
         $data['recruiter'] = $user;
 
-        return view('jobs.edit', $data);
+        return view('jobs.create', $data);
     }
 
 
@@ -120,8 +120,8 @@ class JobController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-            'duration' => 'required'|'in:permanent,temporary,contract,internship',
-            'job_type' => 'required'|'in:l6m,m6m,p',
+            'job_type' => 'required|in:permanent,temporary,contract,internship',
+            'duration' => 'required|in:l6m,m6m,p',
         ]);
     }
 
@@ -134,6 +134,7 @@ class JobController extends Controller
      */
     public function insert(Request $request, $recruiter_id)
     {
+        //dd($request);
 
         $this->validator($request->all())->validate();
 
@@ -141,7 +142,7 @@ class JobController extends Controller
             'name' => $request['name'],
             'description' => $request['description'],
             'duration' => $request['duration'],
-            'job_type' => $request['name'],
+            'job_type' => $request['job_type'],
             'recruiter_id' => $recruiter_id,
         ])
             ? redirect()->route('job.list')
