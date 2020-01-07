@@ -25,7 +25,12 @@
                             <div class="card mt-2">
                                 <h5 class="card-header">Recruiter's info</h5>
                                 <div class="card-body">
-                                    <h5 class="card-title">Recruiter: TODO</h5>
+                                    <h5 class="card-title">Recruiters</h5>
+                                    <ul>
+                                        @foreach($recruiters as $recruiter)
+                                            <li>{{ $recruiter->name }}</li>
+                                        @endforeach
+                                    </ul>
                                     <h5 class="card-title">Contact: TODO</h5>
                                 </div>
                             </div>
