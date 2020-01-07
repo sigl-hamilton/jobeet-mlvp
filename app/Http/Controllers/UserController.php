@@ -54,6 +54,11 @@ class UserController extends Controller
         return view('users.edit', $data);
     }
 
+    public function index($id)
+    {
+        return view('users.index', ['user' => User::where(['id' => $id])->with('labels', 'company')->first()]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
