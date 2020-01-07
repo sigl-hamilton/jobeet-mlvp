@@ -33,7 +33,24 @@ class JobController extends Controller
         // TODO Only if admin
         $jobs = Job::with('recruiter')->get();
 
-        return view('jobs.list', ['jobs' => $jobs]);
+        $user = Auth::user();
+
+        $labelIds = $user->labels->pluck('id');
+
+        for($i = 0; $i < count($jobs); ++$i) {
+            $jobLabelIds = $jobs[$i]->labels->pluck('id');
+            $labelLength = count($jobLabelIds);
+            if($labelLength && $user->user_type == 'candidate') {
+                $match = (count($labelIds->intersect($jobLabelIds)) / $labelLength) * 100 ;
+            } elseif($user->user_type == 'candidate') {
+                $match = 100;
+            } else {
+                    $match = -1;
+            }
+            $jobs[$i]->match = $match;
+        }
+
+        return view('jobs.list', ['jobs' => $jobs->sortByDesc('match'), 'user_labelIds' => $labelIds]);
     }
 
     /**
