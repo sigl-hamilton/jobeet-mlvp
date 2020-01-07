@@ -86,6 +86,7 @@ class RegisterController extends Controller
 
         $company = Company::query()->find($data['company_id']);
         $user->company()->associate($company);
+        $company->addEmployee($company->id);
 
         $user->save();
 

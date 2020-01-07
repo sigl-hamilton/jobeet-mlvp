@@ -28,6 +28,13 @@ class Company extends Model
     {
         return $this->number_of_employees;
     }
+
+    public function addEmployee($company_id)
+    {
+        $company = Company::where('id',$company_id)->first();
+        $company->number_of_employees += 1;
+        $company->save();
+    }
 }
 
 
