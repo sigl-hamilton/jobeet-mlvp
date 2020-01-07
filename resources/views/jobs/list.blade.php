@@ -13,14 +13,22 @@
                     </div>
                     <div class="card-body">
                         @foreach($jobs as $job)
-                        <div class="card mt-5">
-                            <h5 class="card-header">{{ $job->name }}</h5>
-                            <div class="card-body">
-                                <h5 class="card-title">Recruiter: {{$job->recruiter->name}}</h5>
-                                <p class="card-text">{{ $job->description }}</p>
-                                <a href="{{ route('job.index', ['id' => $job->id]) }}" class="btn btn-primary">See more</a>
+                            <div class="card mt-5">
+                                <div class="card-header">
+                                    <h5>{{ $job->name }}</h5>
+                                    <div>
+                                        @foreach($job->labels as $label)
+                                            <span class="badge badge-pill badge-info">{{ $label->name }}</span>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Recruiter: {{$job->recruiter->name}}</h5>
+                                    <p class="card-text">{{ $job->description }}</p>
+                                    <a href="{{ route('job.index', ['id' => $job->id]) }}" class="btn btn-primary">See
+                                        more</a>
+                                </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
