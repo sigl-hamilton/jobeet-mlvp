@@ -16,15 +16,20 @@
                             <div class="card">
                                 <h5 class="card-header">Recruiter info</h5>
                                 <div class="card-body">
-                                    <h5 class="card-title">Recruiter: {{$job->recruiter->name}}</h5>
-                                    <h5 class="card-title">Contact: {{$job->recruiter->email}}</h5>
+                                    <h5 class="card-title">Recruiter: <a href="{{ route('user.index', $job->recruiter->id) }}">{{$job->recruiter->name}}</a></h5>
+                                    <h5 class="card-title">Contact: <a href="mailto:{{$job->recruiter->email}}">{{$job->recruiter->email}}</a></h5>
                                 </div>
                             </div>
                             <div class="card mt-2">
                                 <h5 class="card-header">Company info</h5>
                                 <div class="card-body">
-                                    <h5 class="card-title">Recruiter: TODO</h5>
-                                    <h5 class="card-title">Contact: TODO</h5>
+                                    @if ($job->company != null)
+                                        <h5 class="card-title">Name: <a href="{{ route('company.index', $job->company->id) }}">{{$job->company->name}}</a></h5>
+                                        <h5 class="card-title">Contact: <a href="mailto:{{$job->company->email}}">{{$job->company->email}}</a></h5>
+                                        <h5 class="card-title">Address: {{$job->company->address}}</h5>
+                                    @else
+                                        <h5 class="card-title">The job was not posted by a company.</h5>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -35,11 +40,15 @@
                                     <h5 class="card-title">Job Type: {{ ucfirst ($job->job_type) }}</h5>
                                     <h5 class="card-title">Duration: {{ $job->duration }}</h5>
                                     <p class="card-text">{{ $job->description }}</p>
-                                    <h5 class="card-title">Skills needed:
-                                        @foreach($job->labels as $label)
-                                            <span class="badge badge-dark">{{$label->name}}</span>
-                                        @endforeach
-                                    </h5>
+                                    <h5 class="card-title">Skills needed:</h5>
+                                        @if (count($job->labels) != 0)
+                                            @foreach($job->labels as $label)
+                                                <h5><span class="badge badge-dark">{{$label->name}}</span></h5>
+                                            @endforeach
+                                        @else
+                                            This job don't need any skill.
+                                        @endif
+
                                 </div>
 
                             </div>

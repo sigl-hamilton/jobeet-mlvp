@@ -39,9 +39,13 @@
                             <div class="card mt-2">
                                 <h5 class="card-header">Skills</h5>
                                 <div class="card-body">
-                                    @foreach($user->labels as $label)
-                                        <span class="badge badge-dark">{{$label->name}}</span>
-                                    @endforeach
+                                    @if (count($user->labels) != 0)
+                                        @foreach($user->labels as $label)
+                                            <span class="badge badge-dark">{{$label->name}}</span>
+                                        @endforeach
+                                    @else
+                                        No skills has been entered.
+                                    @endif
                                 </div>
                             </div>
                         </div>
