@@ -76,14 +76,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $candidate = $data['user_type'] == 'candidate';
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'recruiter' => !$candidate,
-            'candidate' => $candidate,
-            'company' => $data['company'],
-        ]);
+        $user = new User();
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->user_type = $data['user_type'];
+
+
+        $company = Company::query()->find($data['company_id']);
+        $user->company()->associate($company);
+
+        $user->save();
+
+        return $user;
     }
 }

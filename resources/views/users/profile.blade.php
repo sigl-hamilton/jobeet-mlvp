@@ -10,7 +10,7 @@
                         <ul class="navbar-nav mr-auto">
                             <li><a class="nav-link" href="{{ route('user.edit', ['id' => Auth::user()->id]) }}">Personnal information</a></li>
                             <li><a class="nav-link" href="{{ route('label.list') }}">My jobs</a></li>
-                            <li><a class="nav-link" href="{{ route('user.list') }}">My Company</a></li>
+                            <li><a class="nav-link" href="{{ route('company.index', ['id' => Auth::user()->company_id]) }}">My Company</a></li>
                             <li><a class="nav-link" href="{{ route('job.list') }}"></a></li>
                         </ul>
                     </div>

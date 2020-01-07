@@ -95,9 +95,9 @@
                                        class="col-md-4 col-form-label text-md-right">{{ __('Company') }}</label>
 
                                 <div class="col-md-6">
-                                    <select id="company" type="company"
+                                    <select id="company_id" type="company_d"
                                             class="mdb-select form-control @error('company') is-invalid @enderror"
-                                            name="company">
+                                            name="company_id">
 
                                         @foreach($companies as $company)
                                             <option value="{{$company->id}}">{{ $company->name }}</option>
