@@ -24,7 +24,7 @@ class Job extends Model
             case 'm6m':
                 return 'More than 6 months';
             case 'p':
-                return 'Pemanent';
+                return 'Permanent';
             default:
                 return 'unknown value: ' . $value;
         }
@@ -39,8 +39,8 @@ class Job extends Model
     }
 
     /**
- *  Get candidates that has this label
- */
+     *  Get candidates that has this label
+     */
     public function recruiter()
     {
         return $this->belongsTo('App\User');

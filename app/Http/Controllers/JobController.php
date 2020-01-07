@@ -135,20 +135,22 @@ class JobController extends Controller
      */
     public function insert(Request $request, $recruiter_id)
     {
-        //dd($request);
-
         $this->validator($request->all())->validate();
 
         $recruiter = User::where(['id' => $recruiter_id])->first();
 
-        return Job::create([
+        $job = Job::create([
             'name' => $request['name'],
             'description' => $request['description'],
             'duration' => $request['duration'],
             'job_type' => $request['job_type'],
             'recruiter_id' => $recruiter->id,
             'company_id' => $recruiter->company_id,
-        ])
+        ]);
+
+        $job->labels()->sync($request['labels']);
+
+        return $job
             ? redirect()->route('job.list')
             : redirect()->route('job.create');
     }
