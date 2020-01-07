@@ -154,6 +154,6 @@ class ChatkitController extends Controller
      */
     public function logout(Request $request)
     {
-        return redirect(url('/chat/index'));
+        return redirect(url('/home'));
     }
 }

@@ -56,11 +56,11 @@
 <body>
 <div id="app" class="flex-center position-ref full-height">
     <div class="top-right links">
-        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+        <a class="dropdown-item" href="{{ route('chat.logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
             Leave Chat Room
         </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        <form id="logout-form" action="{{ route('chat.logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
     </div>
