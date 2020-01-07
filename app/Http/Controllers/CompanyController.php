@@ -42,7 +42,7 @@ class CompanyController extends Controller
     {
         $data['company'] = Company::where(['id' => $id])->first();
 
-        $data['recruiters'] = User::where(['company_id' => $id])->get();
+        $data['recruiters'] = User::where(['company_id' => $id, 'user_type' => 'recruiter'])->get();
 
         $data['jobs'] = Job::where(['company_id' => $id])->first();
 

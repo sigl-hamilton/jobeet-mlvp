@@ -19,13 +19,14 @@ use Illuminate\Support\Str;
 
 $factory->define(Job::class, function (Faker $faker) {
 
-    $recruiters = User::recruiters()->pluck('id');
-
+    $recruiters = User::recruiters();
+    $recruiter = $faker->randomElement($recruiters);
     return [
         'name' => $faker->name,
         'description' => $faker->text,
-        'recruiter_id' => $faker->randomElement($recruiters),
+        'recruiter_id' => $recruiter->id,
         'job_type' => $faker->randomElement(['permanent', 'temporary', 'contract', 'internship']),
         'duration' => $faker->randomElement(['l6m','m6m','p']),
+        'company_id' => $recruiter->company->id
     ];
 });

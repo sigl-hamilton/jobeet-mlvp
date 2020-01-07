@@ -49,7 +49,9 @@ class User extends Authenticatable
 
     public static function recruiters()
     {
-        return DB::table('users')->where('user_type', 'recruiter')->get();
+        return User::where('user_type', 'recruiter')
+            ->with('company')
+            ->get();
     }
 
     public function recruiterJobs()

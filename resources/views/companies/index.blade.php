@@ -16,7 +16,7 @@
                             <div class="card">
                                 <h5 class="card-header">Company's information</h5>
                                 <div class="card-body">
-                                    <h5 class="card-title">Contact: {{$company->email}}</h5>
+                                    <h5 class="card-title">Contact: <a href="mailto:{{$company->email}}">{{$company->email}}</a></h5>
                                     <h5 class="card-title">Address: {{$company->address}}</h5>
                                     <h5 class="card-title">Number of employee: {{$company->number_of_employees}}</h5>
                                     <p>{{$company->description}}</p>
@@ -27,11 +27,14 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Recruiters</h5>
                                     <ul>
-                                        @foreach($recruiters as $recruiter)
-                                            <li>{{ $recruiter->name }}</li>
-                                        @endforeach
+                                        @if (count($recruiters) != 0)
+                                            @foreach($recruiters as $recruiter)
+                                                <li><a href="{{ route('user.index', $recruiter->id) }}">{{ $recruiter->name }}</a></li>
+                                            @endforeach
+                                        @else
+                                            There is no recruiters in this company.
+                                        @endif
                                     </ul>
-                                    <h5 class="card-title">Contact: TODO</h5>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +42,13 @@
                             <div class="card ">
                                 <h5 class="card-header">Job list</h5>
                                 <div class="card-body">
-                                    TODO : Company's jobs
+                                    @if (count($company->jobs) != 0)
+                                        @foreach($company->jobs as $job)
+                                            <li><a href="{{ route('job.index', $job->id) }}">{{ $job->name }}</a></li>
+                                        @endforeach
+                                    @else
+                                        There is no jobs available in this company.
+                                    @endif
                                 </div>
 
                             </div>
