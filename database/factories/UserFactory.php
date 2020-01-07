@@ -24,6 +24,7 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => 'secret', // password
         'remember_token' => Str::random(10),
-        'user_type' => $faker->randomElement(['recruiter', 'candidate'])
+        'user_type' => $faker->randomElement(['recruiter', 'candidate']),
+        'company_id' => 0
     ];
 });
