@@ -13,7 +13,7 @@ class Job extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'job_type', 'duration', 'recruiter_id'
+        'name', 'description', 'job_type', 'duration', 'recruiter_id', 'company_id'
     ];
 
     public function getDurationAttribute($value)

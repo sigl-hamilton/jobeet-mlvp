@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Label;
 use App\User;
+use App\Job;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -42,6 +43,8 @@ class CompanyController extends Controller
         $data['company'] = Company::where(['id' => $id])->first();
 
         $data['recruiters'] = User::where(['company_id' => $id])->get();
+
+        $data['jobs'] = Job::where(['company_id' => $id])->first();
 
         return view('companies.index', $data);
     }

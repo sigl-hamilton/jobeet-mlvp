@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use App\Label;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -138,12 +139,15 @@ class JobController extends Controller
 
         $this->validator($request->all())->validate();
 
+        $recruiter = User::where(['id' => $recruiter_id])->first();
+
         return Job::create([
             'name' => $request['name'],
             'description' => $request['description'],
             'duration' => $request['duration'],
             'job_type' => $request['job_type'],
-            'recruiter_id' => $recruiter_id,
+            'recruiter_id' => $recruiter->id,
+            'company_id' => $recruiter->company_id,
         ])
             ? redirect()->route('job.list')
             : redirect()->route('job.create');
