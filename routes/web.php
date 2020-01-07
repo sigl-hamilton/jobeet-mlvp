@@ -43,3 +43,7 @@ Route::get('/label/list', 'LabelController@list')->name('label.list');
 Route::get('/label/create-form', 'LabelController@showCreateLabelForm')->name('label.create');
 Route::post('/label/insert', 'LabelController@insert')->name('label.insert');
 
+Route::get('/chat/index', 'ChatkitController@index');
+Route::post('/chat/join', 'ChatkitController@join');
+Route::get('/chat/chat', 'ChatkitController@chat')->name('chat');
+Route::post('/chat/logout', 'ChatkitController@logout')->name('logout');
