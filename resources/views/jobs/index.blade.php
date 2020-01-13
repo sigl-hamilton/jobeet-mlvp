@@ -7,8 +7,12 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left"><h5>Job: {{ $job->name }}</h5></div>
-                        <div class="float-right">
+                        <div class="float-right row">
                             <a href="{{ route('job.edit', ['id' => $job->id]) }}" class="btn btn-primary">Update</a>
+                            <form action="{{ route('job.delete', ['id' => $job->id]) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </div>
                     </div>
                     <div class="card-body row">

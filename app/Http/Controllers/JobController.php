@@ -171,4 +171,21 @@ class JobController extends Controller
             ? redirect()->route('job.list')
             : redirect()->route('job.create');
     }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Request $request, $job_id)
+    {
+        $job = Job::where(['id' => $job_id])->first();
+
+        $job->labels()->detach();
+
+        $job->delete();
+
+        return redirect()->route('job.list');
+    }
 }
