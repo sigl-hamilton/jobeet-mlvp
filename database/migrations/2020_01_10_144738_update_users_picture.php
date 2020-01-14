@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUsersCompanyId extends Migration
+class UpdateUsersPicture extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class UpdateUsersCompanyId extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('company_id')->default(null);
+            $table->string('picture')->default('default.jpg');
         });
     }
 
@@ -26,9 +26,7 @@ class UpdateUsersCompanyId extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['company_id']);
+            $table->dropColumn(['picture']);
         });
     }
 }
-
-

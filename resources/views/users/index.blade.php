@@ -50,12 +50,19 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <div class="card ">
+                            <div class="card">
+                                <h5 class="card-header">Picture</h5>
+                                <div class="card-body">
+                                    <center>
+                                        <img src="/uploads/profile_pictures/{{ $user->picture }}" style="width: 150px; height: 150px">
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="card mt-2">
                                 <h5 class="card-header">Member info</h5>
                                 <div class="card-body">
                                     <h5 class="card-title">Member since: {{ $user->created_at }}</h5>
                                 </div>
-
                             </div>
                         </div>
                     </div>

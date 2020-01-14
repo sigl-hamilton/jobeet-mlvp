@@ -21,7 +21,7 @@
                     <div class="card-header">{{ __('Update your Profile') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.update', ['id' => Auth::user()->id]) }}">
+                        <form enctype="multipart/form-data" method="POST" action="{{ route('user.update', ['id' => Auth::user()->id]) }}">
 
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -65,6 +65,12 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right">Profile picture</label>
+                                <div class="col-md-6">
+                                    <input type="file" name="picture" accept="image/png, image/jpg">
+                                </div>
+                            </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
