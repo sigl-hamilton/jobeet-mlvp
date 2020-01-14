@@ -8,11 +8,18 @@
                     <div class="card-header">
                         <div class="float-left"><h5>Job: {{ $job->name }}</h5></div>
                         <div class="float-right row">
-                            <a href="{{ route('job.edit', ['id' => $job->id]) }}" class="btn btn-primary">Update</a>
-                            <form action="{{ route('job.delete', ['id' => $job->id]) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            @if (Auth::user()->user_type !== "candidate")
+                                <a href="{{ route('job.edit', ['id' => $job->id]) }}" class="btn btn-primary">Update</a>
+                                <form action="{{ route('job.delete', ['id' => $job->id]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            @else
+                                <form action="{{ route('job.apply', ['job_id' => $job->id, 'user_id' => Auth::user()->id]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Apply</button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body row">

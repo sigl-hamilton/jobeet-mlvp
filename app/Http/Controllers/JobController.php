@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use App\Label;
+use App\Notification;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -185,6 +186,34 @@ class JobController extends Controller
         $job->labels()->detach();
 
         $job->delete();
+
+        return redirect()->route('job.list');
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function apply(Request $request, $job_id, $user_id)
+    {
+        $job = Job::where(['id' => $job_id])->first();
+
+        $recruiter = $job->recruiter;
+
+        $notification = Notification::create([
+            'user_id' => $recruiter->id,
+            'read' => false,
+            'job_id' => $job->id,
+        ]);
+
+        $notification->user()->associate($recruiter);
+        $notification->job()->associate($job);
+
+        $user = User::where('id',$user_id)->first();
+        $user->jobs()->sync($job);
+        $user->save();
 
         return redirect()->route('job.list');
     }

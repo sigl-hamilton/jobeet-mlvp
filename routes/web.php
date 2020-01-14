@@ -34,6 +34,7 @@ Route::put('/job/update/{id}', 'JobController@update')->name('job.update');
 Route::post('/job/insert/{id}', 'JobController@insert')->name('job.insert');
 Route::get('/job/create', 'JobController@create')->name('job.create');
 Route::post('/job/delete/{id}', 'JobController@delete')->name('job.delete');
+Route::post('/job/apply/{job_id}/user/{user_id}', 'JobController@apply')->name('job.apply');
 
 Route::get('/company/list', 'CompanyController@list')->name('company.list');
 Route::get('/company/index/{id}', 'CompanyController@index')->name('company.index');

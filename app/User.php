@@ -47,6 +47,15 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Label', 'users_labels');
     }
 
+    /**
+     * Get the user's jobs appliance
+     *
+     */
+    public function jobs()
+    {
+        return $this->belongsToMany('App\Job', 'jobs_users');
+    }
+
     public static function recruiters()
     {
         return User::where('user_type', 'recruiter')
@@ -61,6 +70,10 @@ class User extends Authenticatable
 
     public function company(){
         return $this->belongsTo('App\Company');
+    }
+
+    public function notifications(){
+        return $this->hasMany('App\Notification');
     }
 /*
     public function update()

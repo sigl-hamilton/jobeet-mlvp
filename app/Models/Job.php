@@ -54,4 +54,12 @@ class Job extends Model
         return $this->belongsTo('App\Company');
     }
 
+    /**
+     * Get the job's users that applied
+     *
+     */
+    public function candidates()
+    {
+        return $this->belongsToMany('App\User', 'jobs_users');
+    }
 }
