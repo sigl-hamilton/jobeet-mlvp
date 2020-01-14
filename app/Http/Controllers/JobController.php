@@ -61,7 +61,11 @@ class JobController extends Controller
      */
     public function index($id)
     {
-        return view('jobs.index', ['job' => Job::where(['id' => $id])->with('recruiter')->first()]);
+        $job = Job::where(['id' => $id])->with('recruiter')->first();
+
+        $appliers = $job->candidates;
+
+        return view('jobs.index', ['job' => $job, "appliers" => $appliers]);
     }
 
     /**

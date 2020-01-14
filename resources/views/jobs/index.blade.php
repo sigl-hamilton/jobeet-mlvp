@@ -59,10 +59,27 @@
                                         @else
                                             This job don't need any skill.
                                         @endif
-
                                 </div>
-
                             </div>
+                            @if(Auth::user()->user_type !== "candidate")
+                                <div class="card ">
+                                    <h5 class="card-header">Appliers</h5>
+                                    <div class="card-body">
+                                        @if (count($appliers) != 0)
+                                            @foreach($appliers as $applier)
+                                                <div class="card ">
+                                                    <h5 class="card-header">{{ $applier->name }}</h5>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">TODO</h5>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            This job doesn't have any appliers.
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
