@@ -56,12 +56,13 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }}
+                                    @if (count(Auth::user()->notifications->where('read','=','0')) != 0)
+                                        <span class="badge badge-pill badge-danger">{{ count(Auth::user()->notifications) }}</span>
+                                    @endif
+                                    <span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-
                                     <a class="dropdown-item" href="{{ route('user.index', Auth::user()->id) }}">
                                         {{ __('Profile') }}
                                     </a>
@@ -69,6 +70,12 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('user.notifications', Auth::user()->id) }}">
+                                        {{ __('Notifications') }}
+                                        @if (count(Auth::user()->notifications->where('read','=','0')) != 0)
+                                            <span class="badge badge-pill badge-danger">{{ count(Auth::user()->notifications) }}</span>
+                                        @endif
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user/profile', 'UserController@profile')->name('user.profile');
+Route::get('/user/notifications/{id}', 'UserController@notifications')->name('user.notifications');
 Route::get('/user/index/{id}', 'UserController@index')->name('user.index');
 Route::get('/user/list', 'UserController@list')->name('user.list');
 Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');

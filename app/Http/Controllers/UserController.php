@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Label;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -57,6 +58,11 @@ class UserController extends Controller
     public function index($id)
     {
         return view('users.index', ['user' => User::where(['id' => $id])->with('labels', 'company')->first()]);
+    }
+
+    public function notifications($id)
+    {
+        return view('users.notifications', ['user' => User::where(['id' => $id])->with('labels', 'company')->first()]);
     }
 
     /**
