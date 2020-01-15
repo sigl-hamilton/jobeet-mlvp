@@ -70,7 +70,22 @@
                                                 <div class="card ">
                                                     <h5 class="card-header">{{ $applier->name }}</h5>
                                                     <div class="card-body">
-                                                        <h5 class="card-title">TODO</h5>
+                                                        <h5 class="card-title">Skills</h5>
+                                                        <div class="row">
+                                                            @if (count($applier->labels) != 0)
+                                                                @foreach($applier->labels as $label)
+                                                                    @if($job->labels->pluck('id')->contains($label->id))
+                                                                        <span class="badge badge-pill badge-primary">{{ $label->name }}</span>
+                                                                    @else
+                                                                        <span class="badge badge-pill badge-secondary">{{ $label->name }}</span>
+                                                                    @endif
+                                                                @endforeach
+                                                            @else
+                                                                This job don't need any skill.
+                                                            @endif
+                                                        </div>
+                                                        <h5 class="card-title">Mail</h5>
+                                                        <a href="mailto:{{$applier->email}}">{{$applier->email}}</a>
                                                     </div>
                                                 </div>
                                             @endforeach
