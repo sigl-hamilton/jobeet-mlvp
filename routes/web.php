@@ -28,6 +28,8 @@ Route::get('/user/list', 'UserController@list')->name('user.list');
 Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
 Route::put('/user/update/{id}', 'UserController@update')->name('user.update');
 
+Route::get('/notification/read/{id}', 'NotificationController@read')->name('notification.read');
+
 Route::get('/job/list', 'JobController@list')->name('job.list');
 Route::get('/job/index/{id}', 'JobController@index')->name('job.index');
 Route::get('/job/edit/{id}', 'JobController@edit')->name('job.edit');

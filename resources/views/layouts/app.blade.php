@@ -57,8 +57,8 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
-                                    @if (count(Auth::user()->notifications->where('read','=','0')) != 0)
-                                        <span class="badge badge-pill badge-danger">{{ count(Auth::user()->notifications) }}</span>
+                                    @if (count(Auth::user()->notifications->where('read', false)) != 0)
+                                        <span class="badge badge-pill badge-danger">{{ count(Auth::user()->notifications->where('read', false)) }}</span>
                                     @endif
                                     <span class="caret"></span>
                                 </a>
@@ -73,8 +73,8 @@
                                     </a>
                                     <a class="dropdown-item" href="{{ route('user.notifications', Auth::user()->id) }}">
                                         {{ __('Notifications') }}
-                                        @if (count(Auth::user()->notifications->where('read','=','0')) != 0)
-                                            <span class="badge badge-pill badge-danger">{{ count(Auth::user()->notifications) }}</span>
+                                        @if (count(Auth::user()->notifications->where('read', false)) != 0)
+                                            <span class="badge badge-pill badge-danger">{{ count(Auth::user()->notifications->where('read', false)) }}</span>
                                         @endif
                                     </a>
 

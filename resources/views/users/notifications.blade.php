@@ -8,7 +8,9 @@
                     <div class="card-header">{{ $user->name }}</div>
                     <div class="card-body">
                         @foreach($user->notifications as $notification)
-                            <a class="nav-link" href="{{ route('login') }}">
+                            <a class="nav-link" href="
+                            {{ route('notification.read', ['id' => $notification->id]) }}
+                                ">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="card-header">

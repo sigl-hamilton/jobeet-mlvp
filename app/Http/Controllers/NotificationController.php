@@ -23,13 +23,13 @@ class NotificationController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function read($notification_id)
+    public function read($id)
     {
-        $notification = Notification::where(['id' => $notification_id]);
+        $notification = Notification::where(['id' => $id])->first();
 
         $notification->read = true;
         $notification->save();
 
-        return redirect()->route('jobs.index', ['id' => $notification->job->id]);
+        return redirect()->route('job.index', ['id' => $notification->job->id]);
     }
 }
