@@ -26,7 +26,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "serialize-javascript": ">=2.1.1",
+        "serialize-javascript": ">=3.1.0",
         "knockout": "^3.5.1",
         "select2": "^4.0.12",
         "vue-material": "^1.0.0-beta-11",
